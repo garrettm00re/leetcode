@@ -1,3 +1,4 @@
+#https://neetcode.io/problems/jump-game-ii
 def jump(nums: list[int]) -> int:
     def startJump(idx):
         j = nums[idx]
