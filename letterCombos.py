@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
 # see also: https://leetcode.com/problems/letter-combinations-of-a-phone-number/solutions/6208791/simple-intuitive-python-solution-beats-100/
-def letterCombinations(self, digits):
+def letterCombinations(digits):
     """
     :type digits: str
     :rtype: List[str]
