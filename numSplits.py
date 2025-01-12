@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
 
-def numSplits(self, s):
+def numSplits(s):
     """
     :type s: str
     :rtype: int
