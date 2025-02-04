@@ -7,7 +7,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
-class Solution:
+class Solution: 
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         if not root or root == p or root == q:
             return root  # Base case: found p or q or reached the end
