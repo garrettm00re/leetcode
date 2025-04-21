@@ -24,7 +24,7 @@ public:
     }
 };
 
-// Add this main function:
+// linker looks for main function
 int main() {
     Solution solution;
     string test = "abcd";  // test string
