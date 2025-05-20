@@ -7,10 +7,10 @@ using namespace std;
 class MyHashMap {
 public:
         int numBuckets = 1;
-        float loadFactor = 128;
+        float loadFactor = 64;
         int numEl = 0;
         vector<vector<pair<int, int>>> buckets = vector<vector<pair<int, int>>>(numBuckets); // store
-        int resizeFactor = 16;
+        int resizeFactor = 64;
         // is the maximum possible hash value of note? --> no as we use modulo to determine bucketIdx
     MyHashMap() {
     }
@@ -20,7 +20,7 @@ public:
             resize();
         }
         numEl++;
-        int bucketIdx = key % numBuckets;
+        int bucketIdx = hashKey(key);
         pair<int, int> p = {key, value};
         for (auto& p : buckets[bucketIdx]) {
             if (p.first == key) {
@@ -32,7 +32,7 @@ public:
     }
     
     int get(int key) {
-        int bucketIdx = key & (numBuckets - 1);
+        int bucketIdx = hashKey(key);
         for (const auto& p : buckets[bucketIdx]) {
             if (p.first == key) {
                 return p.second;
@@ -42,7 +42,7 @@ public:
     }
     
     void remove(int key) {
-        int bucketIdx = key & (numBuckets - 1);
+        int bucketIdx = hashKey(key);
         vector<pair<int, int>>& bucket = buckets[bucketIdx];
         for (int i = 0; i < bucket.size(); i++) {
             if (bucket[i].first == key) {
@@ -58,8 +58,6 @@ private:
         vector<vector<pair<int, int>>> newBuckets(newNumBuckets);
         for (const auto& bucket : buckets) {
             for (const auto& p : bucket) {
-
-
                 int newBucket = p.first & (newNumBuckets - 1);
                 newBuckets[newBucket].push_back(p);
             }
@@ -68,22 +66,9 @@ private:
         buckets = newBuckets;
 
     }
-    bool isPrime(int n) {
-        if (n <= 1) return false;
-        if (n == 2 || n == 3) return true;
-        if (n % 2 == 0 || n % 3 == 0) return false;
 
-        for (int i = 5; i <= std::sqrt(n); i += 6) {
-            if (n % i == 0 || n % (i + 2) == 0) return false;
-        }
-        return true;
-    }
-
-    int nextPrime(int n) {
-        while (!isPrime(n)) {
-            ++n;
-        }
-        return n;
+    int hashKey(int key) {
+        return key & (numBuckets - 1);
     }
 };
 
