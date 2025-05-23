@@ -3,6 +3,11 @@
 
 # sudo ln -s "$(realpath CAR.sh)" /usr/local/bin/CAR -> makes it so that CAR is a command
 
+# need admin privileges to do this -> sudo
+# create a symlink with ln -s
+# realpath -> get the absolute path of the file
+# drops the link in symbolic link file : /usr/local/bin/CAR
+
 # Compile and run a C++ file
 file=$1
 
