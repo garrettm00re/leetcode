@@ -18,10 +18,10 @@ shift
 args="$@"
 
 
-g++ $file -o ${file%.cpp}
+g++ $file -o compiled/${file%.cpp}
 
 if [ $? -eq 0 ]; then
-    ./${file%.cpp} $args
+    ./compiled/${file%.cpp} $args
 else
     echo "Compilation failed"
 fi
