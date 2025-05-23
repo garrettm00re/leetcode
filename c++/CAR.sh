@@ -1,5 +1,8 @@
 #! /bin/bash
 
+
+# sudo ln -s "$(realpath CAR.sh)" /usr/local/bin/CAR -> makes it so that CAR is a command
+
 # Compile and run a C++ file
 file=$1
 
